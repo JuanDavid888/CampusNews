@@ -1,0 +1,13 @@
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.welcome {
+    display: flex;
+    font-size: 2rem;
+    justify-content: center;
+    background-color: red;
+    color: #fff5f5fd
+}
