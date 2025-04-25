@@ -3,7 +3,7 @@ const campusArticles = [
         id: 1,
         title: "Jornada de puertas abiertas en Ingeniería",
         summary: "Visitas guiadas y charlas con profesores y estudiantes.",
-        content: "<p>Este sábado 3 de mayo...</p>",
+        content: "<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptate natus aliquid obcaecati nihil debitis nostrum repellat fuga id neque officia modi explicabo nesciunt voluptatibus, amet facilis minima temporibus earum impedit. Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem commodi rem, laborum deserunt blanditiis repellat consectetur saepe. Aliquam qui vel exercitationem deserunt, reprehenderit eaque odio in veritatis dicta non animi!</p>",
         author: "Oficina de Admisiones",
         image: 'https://static.vecteezy.com/system/resources/previews/052/266/771/non_2x/news-logo-with-a-man-reading-a-newspaper-vector.jpg',
         date: "28 de abril, 2025",
@@ -88,7 +88,101 @@ const data = campusArticles.map(item => `
     </div>
 `);
 
+const news = campusArticles.map(item => `
+    <div class="card">
+        <h2>${item.title}</h2>
+        <p> <strong>Resumen:</strong> <em>${item.summary}</em></p>
+        <p>${item.content}</p>
+        <span>Publicado por: ${item.author} el ${item.date}</span>
+    </div>
+    <style>
+        .card {
+            height: 40rem;
+            position: relative;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(100%, 1fr));
+            justify-content: center;
+            align-items: center;
+            padding: 1rem;
+            margin: 1rem;
+            background: #666;
+            border-radius: 0.5rem;
+        }
 
+        h2 {
+            background-color: #fff;
+            color:rgb(76, 0, 255);
+            padding: 1rem;
+            border: 1px solid #000;
+            border-radius: 0.5rem;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        
+        p {
+            color: #fff;
+            font-size: 1rem;
+            font-weight: bold;
+        }
+
+        strong {
+            color: #f1dc16;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        em {
+            color: #fff;
+            font-size: 1.2rem;
+        }
+
+        span {
+            color: #f1dc16;
+            font-size: 1rem;
+            font-weight: bold;
+        }
+
+        @media screen and (min-width: 1250px) {
+        .card {
+            position: relative;
+            display: flex;
+            height: 40rem;
+            flex-direction: column;
+            padding: 3rem;
+            background: #666;
+            border-radius: 0.5rem;
+            border: 1px solid #000;
+            cursor: pointer;
+            margin-left: 26rem;
+        }
+
+        h2 {
+            font-size: 2rem;
+            font-weight: bold;
+        }
+
+        strong {
+            font-size: 1.7rem;
+            font-weight: bold;
+        }
+
+        em {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        
+        p {
+            color: #fff;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        span {
+            font-size: 1.3rem;
+            font-weight: bold;
+        }
+        `
+);
 
 class CategoriesFilter extends HTMLElement {
     constructor() {
@@ -163,11 +257,34 @@ class CategoriesFilter extends HTMLElement {
                 object-fit: cover;
                 }
             }
+
+            @media screen and (min-width: 400px) {
+                .card {
+                    align-items: center;
+                }
+
+                img {
+                width: 100%;
+                height: 80%;
+                object-fit: contain;
+                }
+            }
+
+            @media screen and (min-width: 700px) {
+                h2 {
+                    font-size: 2rem;
+                    font-weight: bold;
+                }
+            }      
         `;
         
         div.id = 'card';
         div.innerHTML = `<div class="card-container">${data}</div>`;
         shadow.append(style,div);
+
+        this.shadowRoot.getElementById('card').addEventListener('click', () => {
+            div.innerHTML = news;
+        });
     }
 }
 customElements.define("campus-news-list", CategoriesFilter);

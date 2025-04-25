@@ -6,7 +6,7 @@ body {
 
 .welcome {
     display: flex;
-    font-size: 2rem;
+    font-size: 3rem;
     justify-content: center;
     background-color: red;
     color: #fff5f5fd;
