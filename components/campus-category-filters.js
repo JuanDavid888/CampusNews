@@ -5,21 +5,27 @@ class CategoriesFilter extends HTMLElement {
         const nav = document.createElement("nav");
         const style = document.createElement("style");
         style.textContent = `
-            nav {
+            .container {
                 display: flex;
                 justify-content: center;
                 align-items: center;
-                background-color: var(--color-bg);
                 padding: 1rem;
+            }
+            nav {
+                display: flex;
+                overflow-x: auto;
             }
             ul {
                 display: flex;
+                gap: 1rem;
                 justify-content: center;
                 align-items: center;
                 list-style: none;
+                margin-left: -2.5rem;
             }
             li {
-                margin: 0 1rem;
+                display: flex;
+                width: 100%;
             }
             button {
                 width: 10rem;
@@ -41,17 +47,27 @@ class CategoriesFilter extends HTMLElement {
                 transform: scale(1.1);
                 background-color: #000;
             }
+            
+            @media screen and (min-width: 1250px) {
+                nav {
+                display: flex;
+                justify-content: center;
+                overflow-x: auto;
+            }
+            }
         `
 
         nav.id = 'all-categories';
         nav.innerHTML = `
-            <ul>
-                <li><button id="todas">Todas</button></li>
-                <li><button id="eventos">Eventos</button></li>
-                <li><button id="investigacion">Investigación</button></li>
-                <li><button id="empleabilidad">Empleabilidad</button></li>
-                <li><button id="vida-estudiantil">Vida Estudiantil</button></li>
-            </ul>
+            <div class="container">
+                <ul>
+                    <li><button id="todas">Todas</button></li>
+                    <li><button id="eventos">Eventos</button></li>
+                    <li><button id="investigacion">Investigación</button></li>
+                    <li><button id="empleabilidad">Empleabilidad</button></li>
+                    <li><button id="vida-estudiantil">Vida Estudiantil</button></li>
+                </ul>
+            </div>
         `
         shadow.append(style,nav);
     }

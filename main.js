@@ -1,4 +1,5 @@
 import './components/campus-category-filters.js';
+import './components/campus-news-list.js';
 
 const campusArticles = [
     {
@@ -73,4 +74,6 @@ const campusArticles = [
         date: "29 de abril, 2025",
         category: "Investigación"
     },
-  ];
+];
+
+export default campusArticles;
